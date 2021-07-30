@@ -1,29 +1,85 @@
-import React from "react";
+import React, { useState, createRef, Fragment } from "react";
 import ReactDOM from "react-dom";
 import DynamicCreateElement from "../lib/DynamicCreateElement";
+import "./index.css";
 
-const example = (
-  <div
-    style={{
-      padding: "5px",
-      width: "1200px",
-      height: "600px",
-    }}
-  >
-    <DynamicCreateElement style={{ height: "100%" }}>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          padding: '5px',
-          border: '1px solid #c03',
-          borderRadius: '5px',
-        }}
-      >
-        在这里进行测试
+const Example = (props) => {
+  const [value, setValue] = useState("p");
+  const panelRef = createRef();
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const renderTarget = (value) => {
+    switch (value) {
+      case "p":
+        return <p>hello, world</p>;
+      case "green_div":
+        return <div style={{ backgroundColor: "greenyellow" }}></div>;
+      case "input":
+        return <input type="text" />;
+      case "button":
+        return <button onClick={(e) => alert("Just enjoy it!")}>submit</button>;
+      default:
+        break;
+    }
+    return <div></div>;
+  };
+
+  return (
+    <Fragment>
+      <div className="outter-box">
+        <DynamicCreateElement
+          style={{ height: "100%" }}
+          bindTo={panelRef}
+          target={renderTarget(value)}
+        >
+          <div ref={panelRef} className="inner-box"></div>
+          <p>enjoy it</p>
+        </DynamicCreateElement>
       </div>
-    </DynamicCreateElement>
-  </div>
-);
+      <br />
+      <div>
+        <div>
+          <input
+            type="radio"
+            onChange={onChange}
+            value="p"
+            checked={value === "p"}
+          />
+          <label for="c1">&lt;p&gt; with a piece of text</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            onChange={onChange}
+            value="green_div"
+            checked={value === "green_div"}
+          />
+          <label for="c2">green &lt;div&gt;</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            onChange={onChange}
+            value="input"
+            checked={value === "input"}
+          />
+          <label for="c3">text type &lt;input&gt;</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            onChange={onChange}
+            value="button"
+            checked={value === "button"}
+          />
+          <label for="c3">&lt;button&gt;</label>
+        </div>
+      </div>
+    </Fragment>
+  );
+};
 
-ReactDOM.render(example, document.getElementById("root"));
+ReactDOM.render(<Example />, document.getElementById("root"));
