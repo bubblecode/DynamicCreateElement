@@ -1,5 +1,5 @@
 # DynamicCreateElement
-A dynamically created element component based on react⭐⭐。
+A dynamically created element component based on react⭐⭐
 ### usage
 
 ```shell
@@ -26,7 +26,7 @@ const Example = () => {
         style={{ height: "100%" }}
         bindTo={panelRef}
         target={<div style={{ backgroundColor: 'greenyellow' }}></div>}
-        >
+      >
         <div ref={panelRef} className="inner-box"></div>
       </DynamicCreateElement>
     </div>
