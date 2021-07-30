@@ -3,7 +3,7 @@ A dynamically created element component based on react⭐⭐
 ### usage
 
 ```shell
-$ npm install
+$ npm install --registry=https://registry.npmjs.org
 ```
 
 run demo
