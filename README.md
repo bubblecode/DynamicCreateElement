@@ -1,4 +1,9 @@
 # DynamicCreateElement
+![GitHub](https://img.shields.io/github/license/bubblecode/DynamicCreateElement)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bubblecode/DynamicCreateElement)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/bubblecode/DynamicCreateElement/react)
+![GitHub top language](https://img.shields.io/github/languages/top/bubblecode/DynamicCreateElement)
+
 A dynamically created element component based on react⭐⭐
 
 ![demo.gif](https://i.ibb.co/h9kwj9w/demo.gif)
