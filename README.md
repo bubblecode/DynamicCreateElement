@@ -4,7 +4,7 @@
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/bubblecode/DynamicCreateElement/react)
 ![GitHub top language](https://img.shields.io/github/languages/top/bubblecode/DynamicCreateElement)
 
-A dynamically created element component based on react⭐⭐
+A dynamically created element component based on react.🍻🍻🍻
 
 ![demo.gif](https://i.ibb.co/h9kwj9w/demo.gif)
 ### usage
@@ -60,7 +60,7 @@ const Example = () => {
 
   Called after the new component is created, returning the new react child component.
 
-> More useful features will be added in the future
+> 🚩 More useful features will be added in the future. 
 
 ### dependencies
 
