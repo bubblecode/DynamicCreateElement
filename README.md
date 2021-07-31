@@ -1,5 +1,6 @@
 # DynamicCreateElement
 A dynamically created element component based on react⭐⭐
+![demo.gif](https://github.com/bubblecode/DynamicCreateElement/blob/main/public/demo.gif)
 ### usage
 
 ```shell
