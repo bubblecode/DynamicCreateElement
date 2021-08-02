@@ -177,9 +177,9 @@ export default class DynamicCreateElement extends Component {
         className="dynamiccreateelement__outer"
         ref={this.outerContentRef}
         style={this.props.style}
-        onMouseDown={this.onElementCreateStart}
-        onMouseMove={this.onDrawingELement}
-        onMouseUp={this.onElementCreateFinish}
+        onMouseDown={this.props.active && this.onElementCreateStart}
+        onMouseMove={this.props.active && this.onDrawingELement}
+        onMouseUp={this.props.active && this.onElementCreateFinish}
       >
         {this.state.children}
         <div className="__ghost" ref={this.ghostRef}></div>
@@ -189,6 +189,7 @@ export default class DynamicCreateElement extends Component {
 }
 
 DynamicCreateElement.defaultProps = {
+  active: true,
   rasterized: false,
   target: <div style={{ backgroundColor: "blue" }}></div>,
   onBeforeElementCreate: function (event) {
@@ -210,6 +211,6 @@ DynamicCreateElement.propTypes = {
   target: PropTypes.element,   // 目标元素，ReactNode，默认Div
   onBeforeElementCreate: PropTypes.func, // 回调函数，当节点被创建前
   onAfterElementCreate: PropTypes.func, // 回调函数，当节点被创建后
-  __active: PropTypes.bool,      // 是否激活当前控件（保留）
+  active: PropTypes.bool,      // 是否激活当前控件
   __rasterized: PropTypes.bool,  // 栅格化（保留）
 };
