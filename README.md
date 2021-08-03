@@ -23,23 +23,23 @@ $ npm run dev
 use in webpack
 
 ```jsx
-import React, { createRef } from "react";
-import ReactDOM from "react-dom";
-import DynamicCreateElement from "../lib/DynamicCreateElement";
+import { createRef } from "react";
+import { DynamicCreateElement } from "dynamic-create-element";
 const Example = () => {
   const panelRef = createRef();
   return (
-    <div className="outter-box">
+    <div {{ width: '100px', height: '100px', border: '1px solid #f00' }}>
       <DynamicCreateElement
         style={{ height: "100%" }}
         bindTo={panelRef}
         target={<div style={{ backgroundColor: 'greenyellow' }}></div>}
       >
-        <div ref={panelRef} className="inner-box"></div>
+        <div ref={panelRef}></div>
       </DynamicCreateElement>
     </div>
   );
 };
+export default Example;
 ```
 
 ### parameters
