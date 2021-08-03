@@ -1,4 +1,4 @@
-# DynamicCreateElement
+# dynamic-create-element
 ![GitHub](https://img.shields.io/github/license/bubblecode/DynamicCreateElement)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bubblecode/DynamicCreateElement)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/bubblecode/DynamicCreateElement/react)
