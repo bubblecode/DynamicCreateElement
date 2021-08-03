@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { CREATE_STATE } from "./api";
-import "./css/DynamicCreateElement.css";
+import "./DynamicCreateElement.css";
 
-export default class DynamicCreateElement extends Component {
+class DynamicCreateElement extends Component {
   constructor(props) {
     super(props);
     this.ghostRef = React.createRef();
@@ -144,17 +144,20 @@ export default class DynamicCreateElement extends Component {
         children,
         children: { props },
       } = this.state;
-      this.setState({
-        children: {
-          ...children,
-          props: {
-            ...props,
-            children: [...this.fromPropsGetChildrenList(props), newNode],
+      this.setState(
+        {
+          children: {
+            ...children,
+            props: {
+              ...props,
+              children: [...this.fromPropsGetChildrenList(props), newNode],
+            },
           },
         },
-      }, () => {
-        this.props.onAfterElementCreate(this.state.children);
-      });
+        () => {
+          this.props.onAfterElementCreate(this.state.children);
+        }
+      );
     }
   };
 
@@ -208,9 +211,11 @@ DynamicCreateElement.propTypes = {
       current: PropTypes.object,
     }),
   ]),
-  target: PropTypes.element,   // 目标元素，ReactNode，默认Div
+  target: PropTypes.element, // 目标元素，ReactNode，默认Div
   onBeforeElementCreate: PropTypes.func, // 回调函数，当节点被创建前
   onAfterElementCreate: PropTypes.func, // 回调函数，当节点被创建后
-  active: PropTypes.bool,      // 是否激活当前控件
-  __rasterized: PropTypes.bool,  // 栅格化（保留）
+  active: PropTypes.bool, // 是否激活当前控件
+  __rasterized: PropTypes.bool, // 栅格化（保留）
 };
+
+export default DynamicCreateElement;
