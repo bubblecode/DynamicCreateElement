@@ -11,13 +11,7 @@ A dynamically created element component based on react.🍻🍻🍻
 ### usage
 
 ```shell
-$ npm install --registry=https://registry.npmjs.org
-```
-
-run demo
-
-```shell
-$ npm run dev
+$ npm install dynamic-create-element --registry=https://registry.npmjs.org
 ```
 
 use in webpack
