@@ -85,6 +85,7 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
     };
 
     _this.onElementCreateStart = function (e) {
+      if (!_this.props.active) return;
       e.stopPropagation();
 
       if (_this.state.curStep !== _api.CREATE_STATE.FINISH || e.nativeEvent.buttons !== 1) {
@@ -109,7 +110,7 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
     _this.onDrawingELement = function (e) {
       var curStep = _this.state.curStep;
 
-      if (curStep !== _api.CREATE_STATE.START && curStep !== _api.CREATE_STATE.DRAWING || e.nativeEvent.buttons !== 1) {
+      if (!_this.props.active || curStep !== _api.CREATE_STATE.START && curStep !== _api.CREATE_STATE.DRAWING || e.nativeEvent.buttons !== 1) {
         return;
       }
 
@@ -128,6 +129,10 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
     };
 
     _this.onElementCreateFinish = function (e) {
+      if (!_this.props.active || _this.state.curStep !== _api.CREATE_STATE.DRAWING) {
+        return;
+      }
+
       _this.setState({
         curStep: _api.CREATE_STATE.FINISH
       });
@@ -229,9 +234,9 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
       className: "dynamiccreateelement__outer",
       ref: this.outerContentRef,
       style: this.props.style,
-      onMouseDown: this.props.active && this.onElementCreateStart,
-      onMouseMove: this.props.active && this.onDrawingELement,
-      onMouseUp: this.props.active && this.onElementCreateFinish
+      onMouseDown: this.onElementCreateStart,
+      onMouseMove: this.onDrawingELement,
+      onMouseUp: this.onElementCreateFinish
     }, this.state.children, /*#__PURE__*/_react["default"].createElement("div", {
       className: "__ghost",
       ref: this.ghostRef

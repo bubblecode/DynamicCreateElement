@@ -62,6 +62,7 @@ class DynamicCreateElement extends Component {
 
   // 按下左键
   onElementCreateStart = (e) => {
+    if (!this.props.active) return;
     e.stopPropagation();
     if (
       this.state.curStep !== CREATE_STATE.FINISH ||
@@ -89,6 +90,7 @@ class DynamicCreateElement extends Component {
   onDrawingELement = (e) => {
     const { curStep } = this.state;
     if (
+      !this.props.active ||
       (curStep !== CREATE_STATE.START && curStep !== CREATE_STATE.DRAWING) ||
       e.nativeEvent.buttons !== 1
     ) {
@@ -103,6 +105,9 @@ class DynamicCreateElement extends Component {
 
   // 松开鼠标
   onElementCreateFinish = (e) => {
+    if (!this.props.active || this.state.curStep !== CREATE_STATE.DRAWING) {
+      return;
+    }
     this.setState({ curStep: CREATE_STATE.FINISH });
     const attr = this.resetGhost();
     this.onCreateElement(attr);
@@ -180,9 +185,9 @@ class DynamicCreateElement extends Component {
         className="dynamiccreateelement__outer"
         ref={this.outerContentRef}
         style={this.props.style}
-        onMouseDown={this.props.active && this.onElementCreateStart}
-        onMouseMove={this.props.active && this.onDrawingELement}
-        onMouseUp={this.props.active && this.onElementCreateFinish}
+        onMouseDown={this.onElementCreateStart}
+        onMouseMove={this.onDrawingELement}
+        onMouseUp={this.onElementCreateFinish}
       >
         {this.state.children}
         <div className="__ghost" ref={this.ghostRef}></div>

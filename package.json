@@ -1,6 +1,6 @@
 {
   "name": "dynamic-create-element",
-  "version": "0.0.4rc2",
+  "version": "0.0.5",
   "description": "A component that can draw elements dynamically by dragging the mouse.",
   "main": "index.js",
   "directories": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "build.bat",
+    "build": "powershell -file build.ps1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,16 +30,16 @@
     "prop-types": "15.x"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.6",
-    "@babel/eslint-parser": "^7.14.5",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.14.5",
-    "@babel/plugin-transform-object-assign": "^^7.14.5",
-    "@babel/preset-env": "^7.14.5",
-    "@babel/preset-flow": "^7.14.5",
-    "@babel/preset-react": "^7.14.5",
-    "babel-loader": "^8.0.6",
+    "@babel/cli": "7.14.5",
+    "@babel/core": "7.14.6",
+    "@babel/eslint-parser": "7.14.5",
+    "@babel/plugin-proposal-class-properties": "7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "7.14.5",
+    "@babel/plugin-transform-object-assign": "7.14.5",
+    "@babel/preset-env": "7.14.5",
+    "@babel/preset-flow": "7.14.5",
+    "@babel/preset-react": "7.14.5",
+    "babel-loader": "8.0.6",
     "cross-env": "^7.0.2",
     "css-loader": "^5.2.6",
     "enzyme": "^3.11.0",
