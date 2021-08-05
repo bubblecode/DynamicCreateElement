@@ -17,18 +17,15 @@ $ npm install dynamic-create-element --registry=https://registry.npmjs.org
 use in webpack
 
 ```jsx
-import { createRef } from "react";
 import { DynamicCreateElement } from "dynamic-create-element";
 const Example = () => {
-  const panelRef = createRef();
   return (
     <div {{ width: '100px', height: '100px', border: '1px solid #f00' }}>
       <DynamicCreateElement
         style={{ height: "100%" }}
-        bindTo={panelRef}
         target={<div style={{ backgroundColor: 'greenyellow' }}></div>}
       >
-        <div ref={panelRef}></div>
+        <div className="elementContainer"></div>
       </DynamicCreateElement>
     </div>
   );
@@ -38,11 +35,11 @@ export default Example;
 
 ### parameters
 
-- `children` Components that want to use this feature
-
-- `bindTo` Require a reactRef, the corresponding component can realize the function of dynamically adding elements, the default is the first child element under DynamicCreateElement.
+- `children` The component can only have one parent node, and new elements will be created under the parent node.
 
 - `target` Rendered components
+
+- `active` Activate the function of the current component (default `true`).
 
 - `onBeforeElementCreate(event)`
 
@@ -60,7 +57,7 @@ export default Example;
 ### dependencies
 
 ```text
-react: ^17.0.2
-react-dom: ^17.0.2
+react: ^16.10.2
+react-dom: ^16.10.2
 ```
 
