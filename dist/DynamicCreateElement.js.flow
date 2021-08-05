@@ -11,7 +11,6 @@ class DynamicCreateElement extends Component {
     this.outerContentRef = React.createRef();
     this.state = {
       curStep: CREATE_STATE.FINISH,
-      bindTo: null,
       startX: 0,
       startY: 0,
       children: props.children,
@@ -20,9 +19,6 @@ class DynamicCreateElement extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      bindTo: this.getBoundNode(this.props),
-    });
   }
 
   generateKey = (key) => {
@@ -32,16 +28,11 @@ class DynamicCreateElement extends Component {
     return `r__dce__${+new Date()}`;
   };
 
-  getBoundNode = (props) => {
-    const { bindTo, children } = props;
-    if (bindTo && Object(bindTo).current === "object") {
-      return bindTo.current;
-    } else if (children && this.outerContentRef.current instanceof HTMLElement) {
-        return this.outerContentRef.current.firstChild;
-    }
-    throw new TypeError("cannot find react node to bind.");
-  };
-
+  /**
+   * 该函数用于查找要创建元素所在容器的props，因此会返回一个Array。
+   * @param {object} props 
+   * @returns Array
+   */
   fromPropsGetChildrenList = (props) => {
     const { children } = props;
     if (children && typeof children === "object") {
@@ -204,11 +195,6 @@ DynamicCreateElement.defaultProps = {
 
 DynamicCreateElement.propTypes = {
   children: PropTypes.element,
-  bindTo: PropTypes.oneOfType([
-    PropTypes.shape({
-      current: PropTypes.object,
-    }),
-  ]),
   target: PropTypes.element, // 目标元素，ReactNode，默认Div
   onBeforeElementCreate: PropTypes.func, // 回调函数，当节点被创建前
   onAfterElementCreate: PropTypes.func, // 回调函数，当节点被创建后

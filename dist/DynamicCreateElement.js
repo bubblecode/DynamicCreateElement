@@ -45,19 +45,6 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
       return "r__dce__" + +new Date();
     };
 
-    _this.getBoundNode = function (props) {
-      var bindTo = props.bindTo,
-          children = props.children;
-
-      if (bindTo && Object(bindTo).current === "object") {
-        return bindTo.current;
-      } else if (children && _this.outerContentRef.current instanceof HTMLElement) {
-        return _this.outerContentRef.current.firstChild;
-      }
-
-      throw new TypeError("cannot find react node to bind.");
-    };
-
     _this.fromPropsGetChildrenList = function (props) {
       var children = props.children;
 
@@ -203,7 +190,6 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
     _this.outerContentRef = /*#__PURE__*/_react["default"].createRef();
     _this.state = {
       curStep: _api.CREATE_STATE.FINISH,
-      bindTo: null,
       startX: 0,
       startY: 0,
       children: _props.children,
@@ -214,11 +200,7 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
 
   var _proto = DynamicCreateElement.prototype;
 
-  _proto.componentDidMount = function componentDidMount() {
-    this.setState({
-      bindTo: this.getBoundNode(this.props)
-    });
-  };
+  _proto.componentDidMount = function componentDidMount() {};
 
   _proto.render = function render() {
     return /*#__PURE__*/_react["default"].createElement("div", {
@@ -254,9 +236,6 @@ DynamicCreateElement.defaultProps = {
 };
 DynamicCreateElement.propTypes = {
   children: _propTypes["default"].element,
-  bindTo: _propTypes["default"].oneOfType([_propTypes["default"].shape({
-    current: _propTypes["default"].object
-  })]),
   target: _propTypes["default"].element,
   // 目标元素，ReactNode，默认Div
   onBeforeElementCreate: _propTypes["default"].func,
