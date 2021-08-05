@@ -51,20 +51,8 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
 
       if (bindTo && Object(bindTo).current === "object") {
         return bindTo.current;
-      }
-
-      if (children) {
-        if (Array.isArray(children)) {
-          return children[0];
-        }
-
-        if (typeof children === "object") {
-          return children;
-        }
-
-        if (typeof children === "string") {
-          return _this.outerContentRef.current;
-        }
+      } else if (children && _this.outerContentRef.current instanceof HTMLElement) {
+        return _this.outerContentRef.current.firstChild;
       }
 
       throw new TypeError("cannot find react node to bind.");
@@ -215,9 +203,10 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
     _this.outerContentRef = /*#__PURE__*/_react["default"].createRef();
     _this.state = {
       curStep: _api.CREATE_STATE.FINISH,
+      bindTo: null,
       startX: 0,
       startY: 0,
-      children: _this.getBoundNode(_props),
+      children: _props.children,
       preventDefault: false
     };
     return _this;
@@ -226,7 +215,9 @@ var DynamicCreateElement = /*#__PURE__*/function (_Component) {
   var _proto = DynamicCreateElement.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    this.setState({});
+    this.setState({
+      bindTo: this.getBoundNode(this.props)
+    });
   };
 
   _proto.render = function render() {
@@ -262,9 +253,8 @@ DynamicCreateElement.defaultProps = {
   }
 };
 DynamicCreateElement.propTypes = {
-  children: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].array]),
-  bindTo: _propTypes["default"].oneOfType([// 添加到哪个元素里面（reactVDOM）,不写则默认是第一个元素
-  _propTypes["default"].shape({
+  children: _propTypes["default"].element,
+  bindTo: _propTypes["default"].oneOfType([_propTypes["default"].shape({
     current: _propTypes["default"].object
   })]),
   target: _propTypes["default"].element,

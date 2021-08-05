@@ -11,15 +11,18 @@ class DynamicCreateElement extends Component {
     this.outerContentRef = React.createRef();
     this.state = {
       curStep: CREATE_STATE.FINISH,
+      bindTo: null,
       startX: 0,
       startY: 0,
-      children: this.getBoundNode(props),
+      children: props.children,
       preventDefault: false,
     };
   }
 
   componentDidMount() {
-    this.setState({});
+    this.setState({
+      bindTo: this.getBoundNode(this.props),
+    });
   }
 
   generateKey = (key) => {
@@ -33,17 +36,8 @@ class DynamicCreateElement extends Component {
     const { bindTo, children } = props;
     if (bindTo && Object(bindTo).current === "object") {
       return bindTo.current;
-    }
-    if (children) {
-      if (Array.isArray(children)) {
-        throw new TypeError("There can only be one root element under the component")
-      }
-      if (typeof children === "object") {
-        return children;
-      }
-      if (typeof children === "string") {
-        return this.outerContentRef.current;
-      }
+    } else if (children && this.outerContentRef.current instanceof HTMLElement) {
+        return this.outerContentRef.current.firstChild;
     }
     throw new TypeError("cannot find react node to bind.");
   };
