@@ -36,7 +36,7 @@ class DynamicCreateElement extends Component {
     }
     if (children) {
       if (Array.isArray(children)) {
-        return children[0];
+        throw new TypeError("There can only be one root element under the component")
       }
       if (typeof children === "object") {
         return children;
@@ -209,9 +209,8 @@ DynamicCreateElement.defaultProps = {
 };
 
 DynamicCreateElement.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.element,
   bindTo: PropTypes.oneOfType([
-    // 添加到哪个元素里面（reactVDOM）,不写则默认是第一个元素
     PropTypes.shape({
       current: PropTypes.object,
     }),
