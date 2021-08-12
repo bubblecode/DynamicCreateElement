@@ -1,6 +1,7 @@
 # dynamic-create-element
 ![GitHub](https://img.shields.io/github/license/bubblecode/DynamicCreateElement)
 ![npm](https://img.shields.io/npm/v/dynamic-create-element)
+![npm](https://img.shields.io/npm/dw/dynamic-create-element)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bubblecode/DynamicCreateElement)
 ![GitHub top language](https://img.shields.io/github/languages/top/bubblecode/DynamicCreateElement)
 ![GitHub last commit](https://img.shields.io/github/last-commit/bubblecode/DynamicCreateElement)
@@ -61,3 +62,5 @@ react: ^16.10.2
 react-dom: ^16.10.2
 ```
 
+### Notice
+In the next major version (1.0.*), we will refactor the components and make major destructive changes. At the same time, we will support more rich scenes and functions.
