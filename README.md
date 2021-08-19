@@ -9,7 +9,7 @@
 A dynamically created element component based on react.🍻🍻🍻
 
 ![demo.gif](https://i.ibb.co/h9kwj9w/demo.gif)
-### usage
+### Install
 
 ```shell
 $ npm install dynamic-create-element --registry=https://registry.npmjs.org
@@ -34,7 +34,58 @@ const Example = () => {
 export default Example;
 ```
 
-### parameters
+use with [`react-grid-layout`](https://www.npmjs.com/package/react-grid-layout)
+
+```jsx
+import ReactGridLayout from "react-grid-layout";
+import { DynamicCreateElement } from "dynamic-create-element";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+const layoutConfig = {
+  cols: 12,
+  rowHeight: 30,
+  width: 1200,
+};
+
+const layout = [
+  { i: "1", x: 0, y: 0, w: 1, h: 2 },
+  { i: "2", x: 1, y: 0, w: 3, h: 2 },
+  { i: "3", x: 4, y: 0, w: 1, h: 2 },
+];
+
+const Example = () => {
+  const { cols, rowHeight, width } = layoutConfig;
+  const onBeforeElementCreate = e => {
+    const { key, props: { layout: elemLayout, style } } = e.vDOM;
+    console.log(key, layout, style);
+  };
+  return (
+    <div className="App">
+      <DynamicCreateElement
+        grid={{
+          rowHeight,
+          columns: cols,
+          freezeWidth: width,
+        }}
+        onBeforeElementCreate={this.onBeforeElementCreate}
+      >
+        <ReactGridLayout
+          className="layout"
+          layout={layout}
+          ...layoutConfig
+        >
+          {layout.map((item) => {
+            return <div key={item.i}></div>;
+          })}
+        </ReactGridLayout>
+      </DynamicCreateElement>
+    </div>
+  );
+};
+export default Example;
+```
+
+### Parameters
 
 - `children` The component can only have one parent node, and new elements will be created under the parent node.
 
@@ -62,7 +113,7 @@ export default Example;
 
 > 🚩 More useful features will be added in the future. 
 
-### dependencies
+### Dependencies
 
 ```text
 react: ^16.10.2
