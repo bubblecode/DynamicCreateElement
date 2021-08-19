@@ -52,6 +52,13 @@ export default Example;
 - `onAfterElementCreate(children)`
 
   Called after the new component is created, returning the new react child component.
+- `grid`
+
+  use grid layout.
+  - **columns**: Number of grid columns.
+  - **rowHeight**: The row height of elements in the grid layout.
+  - **space**: The spacing between elements (pixels, default value 10)
+  - **freezeWidth**: The width of the container of the grid layout. If not set this argument, the current width of the container will default to the so-called total width of the child node.
 
 > 🚩 More useful features will be added in the future. 
 
