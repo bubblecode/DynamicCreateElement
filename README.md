@@ -57,7 +57,7 @@ const Example = () => {
   const { cols, rowHeight, width } = layoutConfig;
   const onBeforeElementCreate = e => {
     const { key, props: { layout: elemLayout, style } } = e.vDOM;
-    console.log(key, layout, style);
+    console.log(key, elemLayout, style);
   };
   return (
     <div className="App">
@@ -67,7 +67,7 @@ const Example = () => {
           columns: cols,
           freezeWidth: width,
         }}
-        onBeforeElementCreate={this.onBeforeElementCreate}
+        onBeforeElementCreate={onBeforeElementCreate}
       >
         <ReactGridLayout
           className="layout"
