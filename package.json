@@ -1,6 +1,6 @@
 {
   "name": "dynamic-create-element",
-  "version": "0.0.5rc2",
+  "version": "0.0.6-beta",
   "description": "A component that can draw elements dynamically by dragging the mouse.",
   "main": "index.js",
   "directories": {
