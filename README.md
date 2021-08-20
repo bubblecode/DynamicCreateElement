@@ -1,9 +1,8 @@
 # dynamic-create-element
-![GitHub](https://img.shields.io/github/license/bubblecode/DynamicCreateElement)
-![npm](https://img.shields.io/npm/v/dynamic-create-element)
-![npm](https://img.shields.io/npm/dw/dynamic-create-element)
+![license](https://img.shields.io/npm/l/dynamic-create-element)
+![npm version](https://img.shields.io/npm/v/dynamic-create-element)
+![download](https://img.shields.io/npm/dm/dynamic-create-element)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bubblecode/DynamicCreateElement)
-![GitHub top language](https://img.shields.io/github/languages/top/bubblecode/DynamicCreateElement)
 ![GitHub last commit](https://img.shields.io/github/last-commit/bubblecode/DynamicCreateElement)
 
 A dynamically created element component based on react.🍻🍻🍻
